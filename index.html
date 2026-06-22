@@ -44,12 +44,42 @@
   /* 画像・メディアは枠からはみ出さない */
   img, svg{ max-width:100%; }
 
-  /* ===== レスポンシブ（スマホ）調整 ===== */
-  /* スマホでは見切れるヘッダーのアンカーナビを隠す（CTAボタン・電話は残す） */
-  @media (max-width:640px){
-    header nav{ display:none !important; }
-    header > div{ gap:12px !important; }
+  /* ===== ヘッダー（PC = 横並びナビ） ===== */
+  .mc-header-inner{ max-width:1160px; margin:0 auto; padding:12px 24px; display:flex; align-items:center; gap:20px; }
+  .mc-nav{ display:flex; gap:22px; margin-left:14px; flex:1; min-width:0; font-size:14px; font-weight:700; color:#3A4A63; flex-wrap:wrap; }
+  .mc-nav a{ white-space:nowrap; }
+  .mc-header-cta{ display:flex; align-items:center; gap:12px; margin-left:auto; }
+  .mc-hamburger{ display:none; }
+  .mc-mobile-menu{ display:none; }
+
+  /* ===== モバイル（≤768px = ハンバーガーに統一） ===== */
+  @media (max-width:768px){
+    .mc-nav{ display:none; }
+    .mc-header-cta{ display:none; }
+    .mc-hamburger{
+      display:flex; flex-direction:column; justify-content:center; gap:5px;
+      margin-left:auto; width:44px; height:44px; padding:0;
+      border:none; background:transparent; cursor:pointer;
+    }
+    .mc-hamburger span{ display:block; width:24px; height:2.5px; border-radius:2px; background:#16233A; transition:transform .25s ease, opacity .2s ease; }
+    .mc-hamburger.open span:nth-child(1){ transform:translateY(7.5px) rotate(45deg); }
+    .mc-hamburger.open span:nth-child(2){ opacity:0; }
+    .mc-hamburger.open span:nth-child(3){ transform:translateY(-7.5px) rotate(-45deg); }
+
+    .mc-mobile-menu{
+      display:block; overflow:hidden; max-height:0; opacity:0;
+      background:#fff; border-top:1px solid #E6ECF5;
+      transition:max-height .32s ease, opacity .25s ease;
+    }
+    .mc-mobile-menu.open{ max-height:520px; opacity:1; }
+    .mc-mm-inner{ padding:6px 24px 18px; display:flex; flex-direction:column; }
+    .mc-mm-link{ padding:14px 2px; font-weight:700; font-size:16px; color:#16233A; border-bottom:1px solid #EEF2F8; }
+    .mc-mm-phone{ display:flex; flex-direction:column; margin-top:14px; line-height:1.2; }
+    .mc-mm-phone .num{ font-size:22px; font-weight:900; color:#0E63C4; font-family:'Zen Kaku Gothic New',sans-serif; }
+    .mc-mm-phone .sub{ font-size:11px; font-weight:700; color:#7C8AA0; }
+    .mc-mm-cta{ margin-top:12px; background:#E23A2E; color:#fff; text-align:center; padding:14px; border-radius:999px; font-weight:900; font-size:15px; box-shadow:0 6px 16px rgba(226,58,46,.28); }
   }
+
   /* 「SP用」固定CTAバーはPCでは非表示にし、その分の下余白も詰める */
   @media (min-width:900px){
     .mc-sticky{ display:none !important; }
@@ -63,17 +93,19 @@
 
   <!-- ===================== HEADER ===================== -->
   <header style="position:sticky; top:0; z-index:50; background:rgba(255,255,255,.92); backdrop-filter:saturate(160%) blur(10px); -webkit-backdrop-filter:saturate(160%) blur(10px); border-bottom:1px solid #E6ECF5;">
-    <div style="max-width:1160px; margin:0 auto; padding:12px 24px; display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+    <div class="mc-header-inner">
       <a href="#top" style="display:flex; align-items:center; gap:10px;">
         <img src="assets/logo.png" alt="丸進引越センター" style="height:34px; width:auto; display:block;">
       </a>
-      <nav style="display:flex; gap:22px; margin-left:14px; flex:1; min-width:0; font-size:14px; font-weight:700; color:#3A4A63; flex-wrap:nowrap; overflow:hidden;">
-        <a href="#strengths" style="white-space:nowrap;">強み</a>
-        <a href="#price" style="white-space:nowrap;">料金</a>
-        <a href="#service" style="white-space:nowrap;">サービス</a>
-        <a href="#faq" style="white-space:nowrap;">よくある質問</a>
+      <!-- PC: 横並びナビ -->
+      <nav class="mc-nav">
+        <a href="#strengths">強み</a>
+        <a href="#price">料金</a>
+        <a href="#service">サービス</a>
+        <a href="#faq">よくある質問</a>
       </nav>
-      <div style="display:flex; align-items:center; gap:12px;">
+      <!-- PC: 電話＋見積もりボタン -->
+      <div class="mc-header-cta">
         <!-- TODO: 電話番号は仮（プレースホルダ）。実番号が決まり次第、tel: と表示の両方を差し替える -->
         <a href="tel:0120123402" style="display:flex; flex-direction:column; align-items:flex-end; line-height:1.1;">
           <span style="font-size:11px; font-weight:700; color:#7C8AA0;">通話無料・年中無休</span>
@@ -81,7 +113,27 @@
         </a>
         <a href="#estimate" style="background:#E23A2E; color:#fff; font-weight:900; font-size:14px; padding:11px 18px; border-radius:999px; white-space:nowrap; box-shadow:0 6px 16px rgba(226,58,46,.28);">無料見積もり</a>
       </div>
+      <!-- SP: ハンバーガー -->
+      <button class="mc-hamburger" id="mc-hamburger" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="mc-mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+
+    <!-- SP: 開閉メニュー -->
+    <nav class="mc-mobile-menu" id="mc-mobile-menu" aria-label="モバイルメニュー">
+      <div class="mc-mm-inner">
+        <a class="mc-mm-link" href="#strengths">強み</a>
+        <a class="mc-mm-link" href="#price">料金</a>
+        <a class="mc-mm-link" href="#service">サービス</a>
+        <a class="mc-mm-link" href="#faq">よくある質問</a>
+        <a class="mc-mm-link" href="#company">会社概要</a>
+        <a class="mc-mm-phone" href="tel:0120123402">
+          <span class="num">📞 0120-1234-02</span>
+          <span class="sub">通話無料・年中無休</span>
+        </a>
+        <a class="mc-mm-cta" href="#estimate">無料見積もり →</a>
+      </div>
+    </nav>
   </header>
 
   <!-- ===================== HERO ===================== -->
@@ -626,6 +678,33 @@
     });
   });
   applyFaq();
+
+  // ---------- ハンバーガーメニュー（SP） ----------
+  var burger = document.getElementById('mc-hamburger');
+  var menu   = document.getElementById('mc-mobile-menu');
+  if (burger && menu) {
+    function setMenu(open) {
+      burger.classList.toggle('open', open);
+      menu.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    }
+    burger.addEventListener('click', function () {
+      setMenu(!menu.classList.contains('open'));
+    });
+    // メニュー内リンクをタップしたら閉じる
+    Array.prototype.forEach.call(menu.querySelectorAll('a'), function (a) {
+      a.addEventListener('click', function () { setMenu(false); });
+    });
+    // Esc で閉じる
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setMenu(false);
+    });
+    // PC幅に戻したら開閉状態をリセット
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 768) setMenu(false);
+    });
+  }
 })();
 </script>
 
