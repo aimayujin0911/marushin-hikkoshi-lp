@@ -40,11 +40,26 @@
 
   /* FAQ 開閉アニメーション */
   .mc-faq-body{ overflow:hidden; max-height:0; opacity:0; transition:max-height .3s ease, opacity .25s ease; }
+
+  /* 画像・メディアは枠からはみ出さない */
+  img, svg{ max-width:100%; }
+
+  /* ===== レスポンシブ（スマホ）調整 ===== */
+  /* スマホでは見切れるヘッダーのアンカーナビを隠す（CTAボタン・電話は残す） */
+  @media (max-width:640px){
+    header nav{ display:none !important; }
+    header > div{ gap:12px !important; }
+  }
+  /* 「SP用」固定CTAバーはPCでは非表示にし、その分の下余白も詰める */
+  @media (min-width:900px){
+    .mc-sticky{ display:none !important; }
+    .mc-page{ padding-bottom:0 !important; }
+  }
 </style>
 </head>
 <body>
 
-<div style="font-family:'Noto Sans JP',sans-serif; color:#16233A; padding-bottom:84px;">
+<div class="mc-page" style="font-family:'Noto Sans JP',sans-serif; color:#16233A; padding-bottom:84px;">
 
   <!-- ===================== HEADER ===================== -->
   <header style="position:sticky; top:0; z-index:50; background:rgba(255,255,255,.92); backdrop-filter:saturate(160%) blur(10px); -webkit-backdrop-filter:saturate(160%) blur(10px); border-bottom:1px solid #E6ECF5;">
@@ -72,7 +87,7 @@
   <!-- ===================== HERO ===================== -->
   <section id="top" style="position:relative; background:linear-gradient(160deg,#0B2C5E 0%,#0E4FA0 55%,#1267C9 100%); color:#fff; overflow:hidden; scroll-margin-top:80px;">
     <div style="position:absolute; inset:0; opacity:.10; background-image:radial-gradient(circle at 20% 20%, #fff 1.5px, transparent 1.6px); background-size:26px 26px;"></div>
-    <div style="position:relative; max-width:1160px; margin:0 auto; padding:54px 24px 60px; display:grid; grid-template-columns:repeat(auto-fit,minmax(330px,1fr)); gap:44px; align-items:center;">
+    <div style="position:relative; max-width:1160px; margin:0 auto; padding:54px 24px 60px; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr)); gap:44px; align-items:center;">
       <div>
         <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.25); padding:7px 14px; border-radius:999px; font-size:13px; font-weight:700; margin-bottom:20px;">
           <span style="width:8px; height:8px; border-radius:50%; background:#F6C445; display:inline-block;"></span>
@@ -185,7 +200,7 @@
 
     <!-- trust strip -->
     <div style="position:relative; background:rgba(255,255,255,.08); border-top:1px solid rgba(255,255,255,.14);">
-      <div style="max-width:1160px; margin:0 auto; padding:16px 24px; display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px; text-align:center; font-size:13.5px; font-weight:700; color:#E7F0FC;">
+      <div style="max-width:1160px; margin:0 auto; padding:16px 24px; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr)); gap:14px; text-align:center; font-size:13.5px; font-weight:700; color:#E7F0FC;">
         <div>🏠 荷造り〜設置までワンストップ</div>
         <div>📞 通話無料フリーダイヤル</div>
         <div>📍 伊丹・西宮・尼崎に密着</div>
@@ -200,7 +215,7 @@
       <div style="font-size:13px; font-weight:900; letter-spacing:3px; color:#0E63C4;">OUR STRENGTHS</div>
       <h2 style="font-family:'Zen Kaku Gothic New',sans-serif; font-weight:900; font-size:clamp(26px,3.4vw,38px); margin:8px 0 0; letter-spacing:.5px;">丸進が選ばれる<span style="color:#0E63C4;">4つの理由</span></h2>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:22px;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr)); gap:22px;">
 
       <div style="background:#fff; border:1px solid #E6ECF5; border-radius:18px; padding:30px 24px; box-shadow:0 8px 24px rgba(16,40,80,.05);">
         <div style="width:56px; height:56px; border-radius:16px; background:#EAF2FE; display:flex; align-items:center; justify-content:center; margin-bottom:18px;">
@@ -241,7 +256,7 @@
       <h2 style="font-family:'Zen Kaku Gothic New',sans-serif; font-weight:900; font-size:clamp(26px,3.4vw,38px); margin:8px 0 0;">ご家庭向け<span style="color:#0E63C4;">3つのコース</span></h2>
       <p style="font-size:15px; color:#5A6B82; margin:12px 0 0;">「どこまで自分でやるか」で選べます。単身は¥8,000〜の単身パックもご用意。</p>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:22px; margin-top:40px;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr)); gap:22px; margin-top:40px;">
 
       <div style="background:#fff; border:1px solid #E6ECF5; border-radius:18px; padding:30px 26px; box-shadow:0 8px 24px rgba(16,40,80,.05);">
         <div style="display:inline-block; background:#EEF4FF; color:#0E63C4; font-weight:900; font-size:13px; padding:6px 14px; border-radius:999px; margin-bottom:14px;">節約コース</div>
@@ -286,7 +301,7 @@
 
   <!-- ===================== サービス・対応エリア ===================== -->
   <section id="service" style="max-width:1160px; margin:0 auto; padding:78px 24px 10px; scroll-margin-top:80px;">
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:40px; align-items:start;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr)); gap:40px; align-items:start;">
       <div>
         <div style="font-size:13px; font-weight:900; letter-spacing:3px; color:#0E63C4;">SERVICE & AREA</div>
         <h2 style="font-family:'Zen Kaku Gothic New',sans-serif; font-weight:900; font-size:clamp(24px,3.2vw,34px); margin:8px 0 18px;">単身からオフィス、海外まで。</h2>
@@ -330,7 +345,7 @@
       <div style="font-size:13px; font-weight:900; letter-spacing:3px; color:#0E63C4;">OPTIONS</div>
       <h2 style="font-family:'Zen Kaku Gothic New',sans-serif; font-weight:900; font-size:clamp(26px,3.4vw,38px); margin:8px 0 0;">引越しまわり、まるごと対応</h2>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr)); gap:16px;">
 
       <div style="background:#fff; border:1px solid #E6ECF5; border-radius:16px; padding:22px 20px; box-shadow:0 6px 18px rgba(16,40,80,.04);">
         <div style="width:44px; height:6px; border-radius:999px; background:#F6C445; margin-bottom:14px;"></div>
@@ -383,7 +398,7 @@
         <div style="font-size:13px; font-weight:900; letter-spacing:3px; color:#0E63C4;">VOICE</div>
         <h2 style="font-family:'Zen Kaku Gothic New',sans-serif; font-weight:900; font-size:clamp(26px,3.4vw,38px); margin:8px 0 0;">お客様の声</h2>
       </div>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:22px;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr)); gap:22px;">
 
         <div style="background:#fff; border:1px solid #E6ECF5; border-radius:18px; padding:28px 26px; box-shadow:0 8px 24px rgba(16,40,80,.05);">
           <div style="color:#F6C445; font-size:18px; letter-spacing:2px; margin-bottom:14px;">★★★★★</div>
@@ -484,7 +499,7 @@
 
   <!-- ===================== 会社概要 + CTA ===================== -->
   <section id="company" style="max-width:1160px; margin:0 auto; padding:78px 24px 10px; scroll-margin-top:80px;">
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:40px;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr)); gap:40px;">
       <div>
         <div style="font-size:13px; font-weight:900; letter-spacing:3px; color:#0E63C4;">COMPANY</div>
         <h2 style="font-family:'Zen Kaku Gothic New',sans-serif; font-weight:900; font-size:clamp(24px,3.2vw,34px); margin:8px 0 22px;">会社概要</h2>
@@ -522,7 +537,7 @@
   </footer>
 
   <!-- ===================== STICKY MOBILE CTA BAR ===================== -->
-  <div style="position:fixed; left:0; right:0; bottom:0; z-index:60; background:#fff; border-top:1px solid #E2EAF5; box-shadow:0 -6px 20px rgba(16,40,80,.10); padding:10px 14px; display:flex; gap:10px;">
+  <div class="mc-sticky" style="position:fixed; left:0; right:0; bottom:0; z-index:60; background:#fff; border-top:1px solid #E2EAF5; box-shadow:0 -6px 20px rgba(16,40,80,.10); padding:10px 14px; display:flex; gap:10px;">
     <a href="tel:0120123402" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; background:#0E63C4; color:#fff; border-radius:12px; padding:9px; font-weight:900;">
       <span style="font-size:10px; font-weight:700; opacity:.85;">通話無料・年中無休</span>
       <span style="font-size:17px; font-family:'Zen Kaku Gothic New',sans-serif;">📞 電話で相談</span>
