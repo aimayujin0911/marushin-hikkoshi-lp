@@ -107,12 +107,78 @@
         </div>
       </div>
 
-      <div style="position:relative;">
-        <div style="position:relative; border-radius:20px; overflow:hidden; box-shadow:0 26px 60px rgba(0,0,0,.35); border:4px solid rgba(255,255,255,.5);">
-          <img src="assets/trucks.jpeg" alt="丸進運輸の引越トラック" style="display:block; width:100%; height:100%; object-fit:cover;">
+      <!-- HERO 内 かんたん見積もり -->
+      <div id="estimate" style="position:relative; scroll-margin-top:80px;">
+        <div style="position:relative; background:#fff; border-radius:20px; box-shadow:0 26px 60px rgba(0,0,0,.35); border:4px solid rgba(255,255,255,.5); overflow:hidden;">
+
+          <!-- card header -->
+          <div style="padding:22px 26px 6px;">
+            <div style="font-size:12px; font-weight:900; letter-spacing:3px; color:#0E63C4;">QUICK ESTIMATE</div>
+            <div style="font-family:'Zen Kaku Gothic New',sans-serif; font-weight:900; font-size:22px; color:#16233A; margin:3px 0 4px;">30秒でかんたん見積もり</div>
+            <div style="font-size:12.5px; color:#5A6B82;">3つ選ぶだけで、概算料金の目安がその場で表示されます。</div>
+          </div>
+
+          <!-- inputs -->
+          <div style="padding:8px 26px 4px; color:#16233A;">
+            <div style="margin-bottom:16px;">
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+                <span style="width:22px; height:22px; border-radius:50%; background:#0E63C4; color:#fff; font-size:12px; font-weight:900; display:flex; align-items:center; justify-content:center;">1</span>
+                <span style="font-weight:900; font-size:14.5px; font-family:'Zen Kaku Gothic New',sans-serif;">人数・荷物量</span>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:9px;">
+                <div class="mc-chip selected" data-group="people" data-key="single_light">単身（少なめ）</div>
+                <div class="mc-chip" data-group="people" data-key="single_heavy">単身〜2人</div>
+                <div class="mc-chip" data-group="people" data-key="family">家族 3〜4人</div>
+                <div class="mc-chip" data-group="people" data-key="large">大家族 5人〜</div>
+              </div>
+            </div>
+
+            <div style="margin-bottom:16px;">
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+                <span style="width:22px; height:22px; border-radius:50%; background:#0E63C4; color:#fff; font-size:12px; font-weight:900; display:flex; align-items:center; justify-content:center;">2</span>
+                <span style="font-weight:900; font-size:14.5px; font-family:'Zen Kaku Gothic New',sans-serif;">移動距離</span>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:9px;">
+                <div class="mc-chip selected" data-group="distance" data-key="d15">同市内〜15km</div>
+                <div class="mc-chip" data-group="distance" data-key="d50">〜50km</div>
+                <div class="mc-chip" data-group="distance" data-key="d200">〜200km</div>
+                <div class="mc-chip" data-group="distance" data-key="far">遠距離 200km〜</div>
+              </div>
+            </div>
+
+            <div>
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+                <span style="width:22px; height:22px; border-radius:50%; background:#0E63C4; color:#fff; font-size:12px; font-weight:900; display:flex; align-items:center; justify-content:center;">3</span>
+                <span style="font-weight:900; font-size:14.5px; font-family:'Zen Kaku Gothic New',sans-serif;">時期</span>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:9px;">
+                <div class="mc-chip selected" data-group="season" data-key="normal">通常期</div>
+                <div class="mc-chip" data-group="season" data-key="busy">繁忙期3-4月</div>
+                <div class="mc-chip" data-group="season" data-key="weekend">土日祝</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- result -->
+          <div style="background:linear-gradient(165deg,#0B2C5E,#0E63C4); color:#fff; padding:18px 26px 22px; margin-top:14px;">
+            <div style="display:flex; align-items:baseline; justify-content:space-between; gap:8px; flex-wrap:wrap;">
+              <div style="font-size:13px; font-weight:700; color:#BDD3F2;">概算料金の目安</div>
+              <div style="font-family:'Zen Kaku Gothic New',sans-serif; font-weight:900; line-height:1.05; letter-spacing:.5px;">
+                <span id="est-low" style="font-size:clamp(26px,3.6vw,34px);">¥8,000</span>
+                <span style="font-size:18px; padding:0 2px;">〜</span>
+                <span id="est-high" style="font-size:clamp(26px,3.6vw,34px);">¥10,000</span>
+              </div>
+            </div>
+            <div style="font-size:11.5px; color:#AFC6EA; margin:10px 0 16px; line-height:1.7;">
+              ※ 入力内容にもとづく目安です。荷物量・建物条件・オプションにより変動します。正確な金額は無料見積もりで。
+            </div>
+            <a href="#contact" style="display:block; background:#F6C445; color:#16233A; font-weight:900; font-size:15px; text-align:center; padding:15px; border-radius:12px; box-shadow:0 10px 24px rgba(0,0,0,.25);">この内容で無料見積もりへ →</a>
+            <a href="tel:0120123402" style="display:block; text-align:center; margin-top:10px; font-weight:900; font-size:14px; color:#fff;">または電話で相談 0120-1234-02</a>
+          </div>
         </div>
-        <div style="position:absolute; top:-16px; right:-8px; background:#E23A2E; color:#fff; font-weight:900; font-size:15px; padding:14px 18px; border-radius:16px; box-shadow:0 12px 26px rgba(226,58,46,.4); animation:floaty 4s ease-in-out infinite; font-family:'Zen Kaku Gothic New',sans-serif;">
-          年中無休<br><span style="font-size:11px; font-weight:700;">急ぎもおまかせ</span>
+
+        <div style="position:absolute; top:-16px; right:-8px; z-index:2; background:#E23A2E; color:#fff; font-weight:900; font-size:14px; padding:11px 15px; border-radius:14px; box-shadow:0 12px 26px rgba(226,58,46,.4); animation:floaty 4s ease-in-out infinite; font-family:'Zen Kaku Gothic New',sans-serif;">
+          年中無休<br><span style="font-size:10px; font-weight:700;">急ぎもおまかせ</span>
         </div>
       </div>
     </div>
@@ -164,78 +230,6 @@
         </div>
         <h3 style="font-family:'Zen Kaku Gothic New',sans-serif; font-weight:900; font-size:20px; margin:0 0 10px;">何でも頼める</h3>
         <p style="font-size:14.5px; line-height:1.85; color:#5A6B82; margin:0;">エアコン工事・ピアノ・自動車・ペット輸送・不用品処分まで。引越しまわりをまるごとお任せいただけます。</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== かんたん見積もり ===================== -->
-  <section id="estimate" style="background:#F4F8FE; margin-top:70px; padding:74px 24px; scroll-margin-top:72px;">
-    <div style="max-width:980px; margin:0 auto;">
-      <div style="text-align:center; margin-bottom:38px;">
-        <div style="font-size:13px; font-weight:900; letter-spacing:3px; color:#0E63C4;">QUICK ESTIMATE</div>
-        <h2 style="font-family:'Zen Kaku Gothic New',sans-serif; font-weight:900; font-size:clamp(26px,3.4vw,38px); margin:8px 0 8px;">30秒でかんたん見積もり</h2>
-        <p style="font-size:15px; color:#5A6B82; margin:0;">3つ選ぶだけで、概算料金の目安がその場で表示されます。</p>
-      </div>
-
-      <div style="background:#fff; border:1px solid #E2EAF5; border-radius:22px; box-shadow:0 18px 48px rgba(16,40,80,.10); overflow:hidden;">
-        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr));">
-
-          <!-- inputs -->
-          <div style="padding:34px 30px;">
-            <div style="margin-bottom:26px;">
-              <div style="display:flex; align-items:center; gap:9px; margin-bottom:13px;">
-                <span style="width:24px; height:24px; border-radius:50%; background:#0E63C4; color:#fff; font-size:13px; font-weight:900; display:flex; align-items:center; justify-content:center;">1</span>
-                <span style="font-weight:900; font-size:16px; font-family:'Zen Kaku Gothic New',sans-serif;">人数・荷物量</span>
-              </div>
-              <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-                <div class="mc-chip selected" data-group="people" data-key="single_light">単身（少なめ）</div>
-                <div class="mc-chip" data-group="people" data-key="single_heavy">単身〜2人</div>
-                <div class="mc-chip" data-group="people" data-key="family">家族 3〜4人</div>
-                <div class="mc-chip" data-group="people" data-key="large">大家族 5人〜</div>
-              </div>
-            </div>
-
-            <div style="margin-bottom:26px;">
-              <div style="display:flex; align-items:center; gap:9px; margin-bottom:13px;">
-                <span style="width:24px; height:24px; border-radius:50%; background:#0E63C4; color:#fff; font-size:13px; font-weight:900; display:flex; align-items:center; justify-content:center;">2</span>
-                <span style="font-weight:900; font-size:16px; font-family:'Zen Kaku Gothic New',sans-serif;">移動距離</span>
-              </div>
-              <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-                <div class="mc-chip selected" data-group="distance" data-key="d15">同市内〜15km</div>
-                <div class="mc-chip" data-group="distance" data-key="d50">〜50km</div>
-                <div class="mc-chip" data-group="distance" data-key="d200">〜200km</div>
-                <div class="mc-chip" data-group="distance" data-key="far">遠距離 200km〜</div>
-              </div>
-            </div>
-
-            <div>
-              <div style="display:flex; align-items:center; gap:9px; margin-bottom:13px;">
-                <span style="width:24px; height:24px; border-radius:50%; background:#0E63C4; color:#fff; font-size:13px; font-weight:900; display:flex; align-items:center; justify-content:center;">3</span>
-                <span style="font-weight:900; font-size:16px; font-family:'Zen Kaku Gothic New',sans-serif;">時期</span>
-              </div>
-              <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px;">
-                <div class="mc-chip selected" data-group="season" data-key="normal">通常期</div>
-                <div class="mc-chip" data-group="season" data-key="busy">繁忙期3-4月</div>
-                <div class="mc-chip" data-group="season" data-key="weekend">土日祝</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- result -->
-          <div style="background:linear-gradient(165deg,#0B2C5E,#0E63C4); color:#fff; padding:38px 32px; display:flex; flex-direction:column; justify-content:center;">
-            <div style="font-size:14px; font-weight:700; color:#BDD3F2; margin-bottom:6px;">概算料金の目安</div>
-            <div style="font-family:'Zen Kaku Gothic New',sans-serif; font-weight:900; line-height:1.05; letter-spacing:.5px;">
-              <span id="est-low" style="font-size:clamp(30px,5vw,42px);">¥8,000</span>
-              <span style="font-size:20px; padding:0 4px;">〜</span>
-              <span id="est-high" style="font-size:clamp(30px,5vw,42px);">¥10,000</span>
-            </div>
-            <div style="font-size:12.5px; color:#AFC6EA; margin:14px 0 22px; line-height:1.7;">
-              ※ 入力内容にもとづく目安です。荷物量・建物条件・オプションにより変動します。正確な金額は無料見積もりで。
-            </div>
-            <a href="#contact" style="background:#F6C445; color:#16233A; font-weight:900; font-size:16px; text-align:center; padding:16px; border-radius:14px; box-shadow:0 10px 24px rgba(0,0,0,.25);">この内容で無料見積もりへ →</a>
-            <a href="tel:0120123402" style="text-align:center; margin-top:12px; font-weight:900; font-size:15px; color:#fff;">または電話で相談 0120-1234-02</a>
-          </div>
-        </div>
       </div>
     </div>
   </section>
